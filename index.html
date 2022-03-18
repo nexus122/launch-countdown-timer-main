@@ -5,14 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
-
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <!-- Fontawersome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>Frontend Mentor | Launch countdown timer</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <link rel="stylesheet" href="style.css">
-  <script defer src="play2.js"></script>
+  <script defer src="play.js"></script>
 
 </head>
 
@@ -26,31 +30,54 @@
 
     <div class="timer">
       <div class="timer--days">
-        <span class="timer--box">00</span>
-        <span class="timer--box2">00</span>
+        <div class='front'>
+          <span class="timer--box--top"></span>
+          <span class="timer--box--bottom">00</span>
+        </div>
+        <div class='back'>
+          <span class="timer--box--top"></span>
+          <span class="timer--box--bottom">00</span>
+        </div>      
         <p>Days</p>
       </div>
       <div class="timer--hours">
-        <span class="timer--box">00</span>
-        <span class="timer--box2">00</span>
+        <div class='front'>
+          <span class="timer--box--top"></span>
+          <span class="timer--box--bottom">00</span>
+        </div>
+        <div class='back'>
+          <span class="timer--box--top"></span>
+          <span class="timer--box--bottom">00</span>
+        </div>
         <p>Hours</p>
       </div>
       <div class="timer--minutes">
-        <span class="timer--box">00</span>
-        <span class="timer--box2">00</span>
+        <div class='front'>
+          <span class="timer--box--top"></span>
+          <span class="timer--box--bottom">00</span>
+        </div>
+        <div class='back'>
+          <span class="timer--box--top"></span>
+          <span class="timer--box--bottom">00</span>
+        </div>
         <p>Minutes</p>
       </div>
       <div class="timer--seconds">
-        <span class="timer--box">00</span>
-        <span class="timer--box2">00</span>
+        <div class='front'>
+          <span class="timer--box--top"></span>
+          <span class="timer--box--bottom">00</span>
+        </div>
+        <div class='back'>
+          <span class="timer--box--top"></span>
+          <span class="timer--box--bottom">00</span>
+        </div>
         <p>Seconds</p>
       </div>
     </div>
 
-    <footer>
-      <img src="images/icon-facebook.svg" alt="icon-facebook">
-      <img src="images/icon-instagram.svg" alt="icon-instagram">
-      <img src="images/icon-pinterest.svg" alt="icon-pinterest">
+    <footer>      
+      <a href="https://github.com/nexus122"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/juan-pablo-romero-pereira-523996101/"><i class="fa-brands fa-instagram"></i></a>
     </footer>
   </main>
 
