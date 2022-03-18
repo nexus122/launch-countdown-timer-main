@@ -41,7 +41,7 @@ p {
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     
 }
@@ -58,6 +58,44 @@ p {
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0px 5px 5px black;
+    transition: 1s all;
+}
+
+.timer--box2{
+    display: none;    
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: hsl(345, 62%, 57%);
+    background-color: hsl(238, 10%, 52%);
+    height: 65px;
+    width: 65px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px black;
+    transition: 1s all;
+}
+
+.animacion-in{
+    animation-duration: 1s;
+    animation-name: in-flipTimer;
+    display: flex;
+}
+
+.animacion-out{
+    animation-duration: 1s;
+    animation-name: out-flipTimer;
+    display: none;
+}
+.confeti{
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url(https://img1.picmix.com/output/stamp/thumb/3/4/8/4/1434843_2deda.gif);    
+    background-repeat: no-repeat;    
+    top: 6%;
+    left: 19%;
 }
 
 footer {
@@ -68,9 +106,38 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 3rem;
-    height: 200px;
+    height: 100px;
     position: absolute;
     bottom: 0;
     width: 100%;
 }
 
+@keyframes in-flipTimer {
+    from {
+        transform: scaleY(-1);
+        opacity: 0;
+    }
+  
+    to {
+        transform: scaleY(1);        
+    } 
+}
+@keyframes out-flipTimer {
+    from {
+        transform: scaleY(1);
+    }
+  
+    to {
+        transform: scaleY(-1);
+    } 
+}
+
+@media (min-width: 321px) {
+    footer {
+      height: 200px;
+    }
+    .confeti{
+        top: 20%;
+        left: 40%;
+    }
+  }
