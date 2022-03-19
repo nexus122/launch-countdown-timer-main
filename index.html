@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
   <!-- Fontawersome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>Frontend Mentor | Launch countdown timer</title>
 
@@ -22,11 +24,38 @@
 
 <body>
   <main>
-    <div class="confeti">
+    <div class="confeti"></div>
 
-    </div>
     <h1>We're launching soon</h1>
+    <aside class='configTimer'>
+      <form name="timerConfig">
+        <h1>Config your timer</h1>
+        <!-- Configurador de dias -->
+        <div class='days'>
+          <label for="days">Days</label>
+          <input name="days" type="number" max='999' value='0' required>
+        </div>
 
+        <!-- Configurador de horas -->
+        <div class='hours'>
+          <label for="hours">Hours</label>
+          <input name="hours" type="number" max='23' value='0' required>
+        </div>
+
+        <!-- Cofigurador de minutos -->
+        <div class='minutes'>
+          <label for="minutes">Minutes</label>
+          <input name="minutes" type="number" max='60' value='0' required>
+        </div>
+
+        <!-- Configurador de segundos -->
+        <div class='segundos'>
+          <label for="seconds">Seconds</label>
+          <input name="seconds" type="number" max='60' value='0' required>
+        </div>
+        <input type="submit">
+      </form>
+    </aside>
 
     <div class="timer">
       <div class="timer--days">
@@ -34,18 +63,10 @@
           <span class="timer--box--top"></span>
           <span class="timer--box--bottom">00</span>
         </div>
-        <div class='back'>
-          <span class="timer--box--top"></span>
-          <span class="timer--box--bottom">00</span>
-        </div>      
         <p>Days</p>
       </div>
       <div class="timer--hours">
         <div class='front'>
-          <span class="timer--box--top"></span>
-          <span class="timer--box--bottom">00</span>
-        </div>
-        <div class='back'>
           <span class="timer--box--top"></span>
           <span class="timer--box--bottom">00</span>
         </div>
@@ -56,10 +77,6 @@
           <span class="timer--box--top"></span>
           <span class="timer--box--bottom">00</span>
         </div>
-        <div class='back'>
-          <span class="timer--box--top"></span>
-          <span class="timer--box--bottom">00</span>
-        </div>
         <p>Minutes</p>
       </div>
       <div class="timer--seconds">
@@ -67,20 +84,17 @@
           <span class="timer--box--top"></span>
           <span class="timer--box--bottom">00</span>
         </div>
-        <div class='back'>
-          <span class="timer--box--top"></span>
-          <span class="timer--box--bottom">00</span>
-        </div>
         <p>Seconds</p>
       </div>
     </div>
 
-    <footer>      
+    <footer>
+      <a href="https://curriculum.juanpabloromeropereira.es/"><i class="fa-brands fa-vuejs"></i></a>
       <a href="https://github.com/nexus122"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/juan-pablo-romero-pereira-523996101/"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/juan-pablo-romero-pereira-523996101/"><i
+          class="fa-brands fa-linkedin"></i></i></a>
     </footer>
   </main>
-
 
 </body>
 
