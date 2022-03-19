@@ -100,7 +100,7 @@ function timer() {
 
         state.seconds--;        
         dubleNumber(state.seconds, state.secondsBox);        
-
+        ocultar();
         document.title = `${state.days} ${state.hours}:${state.minutes}:${state.seconds}`
 
     }, 1000);
@@ -117,8 +117,19 @@ function dubleNumber(num, donde) {
     }
 }
 
-function ocultar
+function ocultar(){
+    if(state.days == 0){
+        document.querySelector(".timer--days").style.display = "none"
+    }
+    if(state.days == 0 && state.hours == 0){
+        document.querySelector(".timer--hours").style.display = "none"
+    }
+    if(state.days == 0 && state.hours == 0 && state.minutes == 0){
+        document.querySelector(".timer--minutes").style.display = "none"
+    }
+}
 
+/* Escucha del formulario */
 document.addEventListener("submit",function(e){
     e.preventDefault();
     console.log("Se ha enviado la información");
@@ -129,15 +140,7 @@ document.addEventListener("submit",function(e){
     state.minutes = state.minutes_Input.value;
     state.seconds = state.seconds_Input.value;
 
-    if(state.days == 0){
-        document.querySelector(".timer--days").style.display = "none"
-    }
-    if(state.days == 0 && state.hours == 0){
-        document.querySelector(".timer--hours").style.display = "none"
-    }
-    if(state.days == 0 && state.hours == 0 && state.minutes == 0){
-        document.querySelector(".timer--minutes").style.display = "none"
-    }
+    ocultar();
 
     timer();
 });
