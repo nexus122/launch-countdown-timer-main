@@ -24,10 +24,10 @@ let state = {
 // Funcion que nos inicia el contador
 function timer() {
     // Dibujamos las variables por primera vez.
-    dubleNumber(state.days, state.daysBox);
-    dubleNumber(state.hours, state.hoursBox);
-    dubleNumber(state.minutes, state.minutesBox);
-    dubleNumber(state.seconds, state.secondsBox);
+    write(state.days, state.daysBox);
+    write(state.hours, state.hoursBox);
+    write(state.minutes, state.minutesBox);
+    write(state.seconds, state.secondsBox);
 
     // Set interval de 1 segundo, modifica los valores del estado e imprime por pantalla los resultados
     let timerBucle = setInterval(function () {
@@ -43,7 +43,7 @@ function timer() {
             state.seconds = 60;
 
             // Modificamos el DOM
-            dubleNumber(state.minutes, state.minutesBox);
+            write(state.minutes, state.minutesBox);
         } else if (state.seconds == 0) {
             /* Si minutos no es mas grannde que 0 pero segundos es igual a 0 */
             state.seconds = 60;
@@ -52,12 +52,12 @@ function timer() {
                 state.minutes = 59;
                 if (state.hours >= 1) {
                     state.hours--;
-                    dubleNumber(state.hours, state.hoursBox);
+                    write(state.hours, state.hoursBox);
                 }
             }
 
             // Dibujamos los minutos en su caja.
-            dubleNumber(state.minutes, state.minutesBox);
+            write(state.minutes, state.minutesBox);
 
         }
 
@@ -67,12 +67,12 @@ function timer() {
             state.minutes = 59;            
 
             // Modificamos el DOM
-            dubleNumber(state.minutes, state.minutesBox);
-            dubleNumber(state.hours, state.hoursBox);
+            write(state.minutes, state.minutesBox);
+            write(state.hours, state.hoursBox);
         } else if (state.minutes == 0 && state.hours >= 1) {            
             state.minutes = 59;
-            dubleNumber(state.minutes, state.minutesBox);
-            dubleNumber(state.hours, state.hoursBox);
+            write(state.minutes, state.minutesBox);
+            write(state.hours, state.hoursBox);
         }
 
         // Si las horas estan a 0 restamos uno a dias y ponemos horas a 23.
@@ -81,41 +81,46 @@ function timer() {
             state.hours = 23;            
 
             // Modificamos el DOM
-            dubleNumber(state.days, state.daysBox);
-            dubleNumber(state.hours, state.hoursBox);
-            dubleNumber(state.minutes, state.minutesBox);
-            dubleNumber(state.seconds, state.secondsBox);
+            write(state.days, state.daysBox);
+            write(state.hours, state.hoursBox);
+            write(state.minutes, state.minutesBox);
+            write(state.seconds, state.secondsBox);
         } else if (state.hours == 0 && state.minutes == 0 && state.seconds == 0) {
             state.hours = 23;
             // Modificamos el DOM
-            dubleNumber(state.days, state.daysBox);
-            dubleNumber(state.hours, state.hoursBox);
-            dubleNumber(state.minutes, state.minutesBox);
+            write(state.days, state.daysBox);
+            write(state.hours, state.hoursBox);
+            write(state.minutes, state.minutesBox);
         }
 
         // Siempre le restamos un segundo a los segundos
         state.seconds--;        
-        dubleNumber(state.seconds, state.secondsBox);
+        write(state.seconds, state.secondsBox);
 
         // Si los dias, horas o minutos llegana 0 y ya no tienen un numero por encima de ellos se ocultan.
         ocultar();
 
         // Dibujamos en el titulo el tiempo que queda.
-        document.title = `${state.days} ${state.hours}:${state.minutes}:${state.seconds}`
+        document.title = `${doubleNumberReturn(state.days)} ${doubleNumberReturn(state.hours)}:${doubleNumberReturn(state.minutes)}:${doubleNumberReturn(state.seconds)}`
 
     }, 1000);
 
 }
 
-// Funcion para escribir un numero de dos cifras
-function dubleNumber(num, donde) {    
-    // Comprobamos si el numero tiene menos de 2 digitos, en ese caso añadimos un 0 delante.
+function doubleNumberReturn(num){
     if (num.toString().length == 1) {
-        donde.innerHTML = "0" + num;        
+        return "0" + num;
     } else {
-        donde.innerHTML = num;        
+        return num;
     }
 }
+
+// Funcion para escribir un numero de dos cifras
+function write(num, donde) {        
+    donde.innerHTML = doubleNumberReturn(num);
+}
+
+
 
 function ocultar(){
     // Hacemos una serie de comprobaciónes para saber si podemos borrar o no uno de los cuadrados donde escribimos el numero.    
