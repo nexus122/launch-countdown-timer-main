@@ -11,7 +11,7 @@ let state = {
     hours_Input: document.forms["timerConfig"].hours,
     minutes_Input: document.forms["timerConfig"].minutes,
     seconds_Input: document.forms["timerConfig"].seconds,
-    // DOM Element
+    // DOM Elements
     daysBox: document.querySelector(".timer--days .timer--box--bottom"),
     hoursBox: document.querySelector(".timer--hours .timer--box--bottom"),
     minutesBox: document.querySelector(".timer--minutes .timer--box--bottom"),
@@ -23,7 +23,7 @@ let state = {
 
 // Funcion que nos inicia el contador
 function timer() {
-    // Inicializamos las variables a sus valores correspondientes
+    // Dibujamos las variables por primera vez.
     dubleNumber(state.days, state.daysBox);
     dubleNumber(state.hours, state.hoursBox);
     dubleNumber(state.minutes, state.minutesBox);
@@ -31,38 +31,33 @@ function timer() {
 
     // Set interval de 1 segundo, modifica los valores del estado e imprime por pantalla los resultados
     let timerBucle = setInterval(function () {
-        // Si todos los valores estan a 0 paramos la aplicacion
-        console.log(state.days, state.hours, state.minutes, state.seconds);
-        if (state.days == 0 && state.hours == 0 && state.minutes == 0 && state.seconds == 0) {
-            console.log("Entramos y acabamos");
+        // Si todos los valores estan a 0 paramos la aplicacion        
+        if (state.days == 0 && state.hours == 0 && state.minutes == 0 && state.seconds == 0) {            
             clearInterval(timerBucle); // Para el set interval
             return;
         }
 
         // Si los segundos estan a 0 restamos 1 a minutos y ponemos segundos a 59        
-        if (state.seconds == 0 && state.minutes >= 1) {
-            console.log("Entramos en minutos");
+        if (state.seconds == 0 && state.minutes >= 1) {            
             state.minutes--;
             state.seconds = 60;
 
             // Modificamos el DOM
             dubleNumber(state.minutes, state.minutesBox);
         } else if (state.seconds == 0) {
-            console.log("Entramos en el else de minutos");
+            /* Si minutos no es mas grannde que 0 pero segundos es igual a 0 */
             state.seconds = 60;
 
             if (state.hours >= 1 || state.days >= 1) {
-                console.log("Entramos en el else de minutos en horas");
                 state.minutes = 59;
                 if (state.hours >= 1) {
-                    console.log("Entramos en el if de horas del else de minutos");
-                    state.hours--
+                    state.hours--;
                     dubleNumber(state.hours, state.hoursBox);
                 }
             }
 
-            state.minutesBox.innerHTML = state.minutes;
-
+            // Dibujamos los minutos en su caja.
+            dubleNumber(state.minutes, state.minutesBox);
 
         }
 
@@ -98,9 +93,14 @@ function timer() {
             dubleNumber(state.minutes, state.minutesBox);
         }
 
+        // Siempre le restamos un segundo a los segundos
         state.seconds--;        
-        dubleNumber(state.seconds, state.secondsBox);        
+        dubleNumber(state.seconds, state.secondsBox);
+
+        // Si los dias, horas o minutos llegana 0 y ya no tienen un numero por encima de ellos se ocultan.
         ocultar();
+
+        // Dibujamos en el titulo el tiempo que queda.
         document.title = `${state.days} ${state.hours}:${state.minutes}:${state.seconds}`
 
     }, 1000);
@@ -108,7 +108,7 @@ function timer() {
 }
 
 // Funcion para escribir un numero de dos cifras
-function dubleNumber(num, donde) {
+function dubleNumber(num, donde) {    
     // Comprobamos si el numero tiene menos de 2 digitos, en ese caso añadimos un 0 delante.
     if (num.toString().length == 1) {
         donde.innerHTML = "0" + num;        
@@ -118,29 +118,32 @@ function dubleNumber(num, donde) {
 }
 
 function ocultar(){
+    // Hacemos una serie de comprobaciónes para saber si podemos borrar o no uno de los cuadrados donde escribimos el numero.    
     if(state.days == 0){
         document.querySelector(".timer--days").style.display = "none"
     }
+    
     if(state.days == 0 && state.hours == 0){
         document.querySelector(".timer--hours").style.display = "none"
     }
+
     if(state.days == 0 && state.hours == 0 && state.minutes == 0){
         document.querySelector(".timer--minutes").style.display = "none"
     }
 }
 
 /* Escucha del formulario */
-document.addEventListener("submit",function(e){
-    e.preventDefault();
-    console.log("Se ha enviado la información");
-    state.form.style.display = "none";
+document.addEventListener("submit",function(e){    
+    e.preventDefault();    
+    state.form.style.display = "none"; // Ocultamos el formulario.
+
     // Inicializamos los valores del contador.
     state.days = state.days_Input.value;
     state.hours = state.hours_Input.value;
     state.minutes = state.minutes_Input.value;
     state.seconds = state.seconds_Input.value;
 
-    ocultar();
+    ocultar(); // Ocultamos los campos como hemos visto antes
 
-    timer();
+    timer(); // Iniciamos el contador.
 });
