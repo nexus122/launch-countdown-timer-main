@@ -63,6 +63,7 @@ p, label {
 
 .configTimer form{
     max-width: 100%;
+    background-image: url(images/bg-stars.svg);
 }
 
 .configTimer input{
@@ -209,7 +210,21 @@ footer {
     }
 }
 
-/* Mediaquerys */
+/* Pantallas grandes*/
+@media (min-width: 321px) {
+    .front, .back {
+        font-size: 3rem;        
+    }
+}
+/* Medida tablets */
+@media (min-width: 768px) {
+    .front, .back {
+        font-size: 5rem;
+        min-width: 120px;
+    }
+}
+
+/* Medida pantalla */
 @media (min-width: 900px) {
     
     h1 {
@@ -266,7 +281,12 @@ footer {
     }
         
 }
+
+
+
+
 /* Para moviles peques */
+/*
 @media screen and (max-width: 1000px){
     .card-number-top:after, .card-number-top:before {
         bottom: -0.25rem;
@@ -275,7 +295,7 @@ footer {
         width: 0.5rem;
     }
 }
-
+*/
 @keyframes flip {
     from {
       transform: rotateX(180deg);
