@@ -35,18 +35,20 @@ p, label {
     font-weight: 100;
 }
 
-.timer{
+.timer {
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    
+    gap: 1em;
 }
+
 .configTimer h1{
     margin-bottom: 1em;
     margin-top: 1em;
 }
+
 .configTimer{
     position: absolute;
     display: flex;
